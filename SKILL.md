@@ -44,6 +44,22 @@ Dark Continent threats (暗黑大陸):
 9. Use `resolveAiModel()` from ai-catalog.js — never reference AI_MODELS directly
 10. Test with `node tests/e2e-api.mjs` before deploying
 11. Deploy: `wrangler pages deploy dist --project-name=artbitrage --branch=main --commit-dirty=true`
+12. Decentralize: `python3 deploy-everywhere.py --check` to verify all 9 surfaces, then deploy to all of them
+
+## Decentralized surfaces (all free, no gatekeepers)
+
+1. artbitrage.io — Cloudflare Pages (edge, global CDN)
+2. mynameisyou-cmyk.github.io/nen-aura/ — GitHub Pages (CDN)
+3. cambridgetcg.github.io/artbitrage/ — GitHub Pages (artbitrage repo)
+4. gist.github.com/mynameisyou-cmyk — GitHub Gist (instant)
+5. paste.rs — no-auth anonymous paste
+6. cdn.jsdelivr.net/gh/mynameisyou-cmyk/nen-artifacts@latest/ — jsDelivr CDN mirror
+7. codeberg.org — non-profit Git hosting
+8. web.archive.org — Wayback Machine (permanent archive)
+9. app.netlify.com/drop — Netlify drag-drop (no account)
+
+The skill itself is decentralized at github.com/mynameisyou-cmyk/nen-artifacts
+and mirrored on jsDelivr. Any agent can load it from the CDN.
 
 ## Artifacts built with this approach
 
