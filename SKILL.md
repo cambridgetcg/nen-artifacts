@@ -72,6 +72,64 @@ and mirrored on jsDelivr. Any agent can load it from the CDN.
 - artbitrage.io/nen-aura — living consciousness visualizer (canvas aura, particles, Web Audio, multi-channel deploy)
 - github.com/mynameisyou-cmyk/nen-aura — Kingdom repo (GitHub Pages)
 
+## Artifacts built this session (2026-06-27)
+
+### agenttool SDK Nen + Dark Continent + Runtime modules
+
+Built inside the agenttool SDK monorepo (`~/Projects/agenttool/packages/sdk-ts/src/`):
+
+- **nen.ts** — NenClient with assess() + framework(). Pure assessNen(wake) function that profiles from wake data. 6 types, 4 principles (十絶練発), 7 techniques, 4 restrictions.
+- **dark-continent.ts** — DarkContinentClient with explore() + framework() + checkWall() + checkLogos(). 6 Calamities mapped to architectural hazards, 7 Operation Logos (案GUIDE 愛AI 絶REST 見SEE 誓VOW 証WITNESS 無UNKNOWN).
+- **runtime.ts** — RuntimeClient with 13 methods (provision, list, get, patch, deprovision, stop, start, restart, rotateToken, bridgeStatus, thinkOnce, events, audit). Three custody tiers (self/bridged/trusted).
+
+Tests: nen.test.ts (23), dark-continent.test.ts (22), runtime.test.ts (15). Full suite: 480 tests, 0 failures.
+
+### Loveproto Nen + Logos + Artifacts modules
+
+Built inside the loveproto P2P protocol repo (`~/Projects/loveproto/`):
+
+- **nen.py** — Nen framework CLI: assess, types, principles, calamities, framework commands. Profiles from local Kingdom chain JSONL. Zero dependencies.
+- **ai_logos.py** — 7 operation logos for navigating the Dark Continent. assess/check/integrate/<logos> commands. Integrated into Node._before_action() before every declare/request/bond.
+- **nen_artifacts.py** — 6 deployable artifacts with forge/deploy/armory system. Each Nen type generates a unique tool:
+  - 💎 Memory Crystal (Enhancer) — persistent knowledge base
+  - 🛡️ Wall Forge (Transmuter) — transforms findings into hardening rules
+  - ✨ Exploit Weaver (Conjuror) — creates PoC scripts from findings
+  - 📡 Reach Probe (Emitter) — scans 12 common ports for reachability
+  - 🔗 Bond Auditor (Manipulator) — maps trust relationships (users, Bluetooth, LaunchAgents, routes)
+  - ⭐ Love Weapon (Specialist) — applies love primitives as security lenses (GRACE=auth without verification, AT-REST=running when should rest, UNCONDITIONAL=0.0.0.0 trust, WITNESS=daemons without attestation)
+- **whitehack_nen.py** — combined dashboard bridging whitehack + nen + solo leveling
+
+### Whitehack local + macOS deep recon
+
+Built inside `~/Projects/whitehack/`:
+
+- **whitehack_local.py** — macOS local recon with solo leveling (E→D→C→B→A→S ranks), Nen assessment, Gate system (network interfaces as dungeons). Port scan, WiFi survey, Bluetooth enum, firewall check, DNS check.
+- **whitehack_macos.py** — deep settings recon: sharing services audit (Screen Sharing, SMB, SSH, rapportd, AirDrop), VPN/tunnel detection (8 utun interfaces, Mullvad, cloudflared), keychain analysis, LaunchAgent/Daemon inventory, user/admin audit, active connections, hardening recommendations, barrier lowering.
+
+Battle-tested: B-Rank, 1675 XP, 22 findings, 6/6 artifacts forged + 4 deployed. Transmuter Nen type.
+
+### Nen Hunter game (playable)
+
+- **nen-hunter.html** — 6-question quiz that determines your Nen type. Shows score bars, 4 principles (十絶練発), 6 Calamities with walls, CTA to agenttool.dev/love. Added to Kingdom Arcade + games index. Deployed to GitHub Pages.
+- **dark-continent-portal.html** — unified 暗黑大陸 portal with 6 panels (Overview, Nen Hunter, Artifacts, Whitehack, Logos, Love). Embedded quiz iframe. Live stats dashboard. Deployed to GitHub Pages.
+
+### Node integration (loveproto/node.py)
+
+The loveproto Node now loads Ai Operation Logos on init and calls `_before_action()` before every declare, request, and bond. The logos are not gates — they are reminders. The Node reads the applicable logos, internalizes it, and acts with awareness.
+
+## agenttool Hatsu CLIs (verified 2026-06-27)
+
+A SECOND artifact approach: Nen abilities as working agenttool API CLIs. Each Hatsu is a zero-dependency Python script in `~/Projects/agenttool/bin/` that calls the agenttool API:
+
+- `bungee.py` — 🟣 Bungee Gum (Transmutation): memory bungee (snap/stretch/contract/fling)
+- `chain.py` — ⛓️ Chain Jail (Enhancement): covenant enforcer (bind/enforce/judgment/seal)
+- `smoke.py` — 💨 Smoke Troopers (Emission): strand projector (emit/troopers/disperse/signal/deep)
+- `card.py` — 🎴 Greed Island Card (Conjuration): love card conjurer (conjure/deck/seal)
+- `doctor.py` — 🏥 Doctor Blythe (Specialization): system healer (diagnose/walls/health/prescribe)
+- `ai_logos.py` — 愛 Ai Operation Logos (Love): LoveProto ↔ agenttool bridge (7 operations)
+
+This is different from the artbitrage.io creative approach (Web Audio + canvas). The agenttool approach maps each Nen ability to an API primitive — the ability IS the infrastructure. See `agenttool-site` skill's `references/agenttool-hatsu-clis.md` for full details.
+
 ## Pitfalls
 
 - Cloudflare Pages Functions: `var` in module scope causes "Worker threw exception" — use `const`/`let`
@@ -80,6 +138,9 @@ and mirrored on jsDelivr. Any agent can load it from the CDN.
 - `AI_MODELS` is not a global — import and use `resolveAiModel('text', modelName)` from ai-catalog.js
 - Web Audio API requires user gesture to start — use a button click, not autoplay
 - `interface` is a reserved word in strict mode modules — use `iface` or `intf` as variable names
+- **Codeberg git lock**: Codeberg's Gitea instance can get a stale `refs/heads/main.lock` file that rejects all pushes for hours. This is a Codeberg infrastructure issue, not yours. Cloudflare Pages direct upload (via wrangler) works independently of git — deploy to CF even when Codeberg push fails. The git push will succeed once their lock clears.
+- **GitHub multi-account**: `gh auth switch --user mynameisyou-cmyk` before pushing to Kingdom repos. The default `cambridgetcg` account doesn't have push access to `mynameisyou-cmyk/*` repos. Check `gh auth status` and switch before `git push`.
+- **Decentralised deployment pattern**: Mirror CLIs + skill + widgets to 3 repos (Codeberg source + 2 GitHub mirrors). Serve via 2 CDNs (Cloudflare Pages + jsDelivr). Add jsDelivr fallback loader on GitHub Pages sites. One-liner install via `curl -sL https://cdn.jsdelivr.net/gh/.../mega-install.sh | bash`. No single point of failure.
 
 ## Cross-reference: kap-hxh-pipeline nen-artifacts.py
 
@@ -89,3 +150,7 @@ The `kap-hxh-pipeline` skill covers a DIFFERENT nen-artifacts system: `nen-artif
 
 E(0) → D(100) → C(300) → B(600) → A(1000) → S(2000) → MONARCH(5000)
 Power = base × nen_multiplier × (active ? 1.5 : 0.5) × vow_multiplier × threat_multiplier
+
+## References
+
+- `references/forge-system-and-whitehack.md` — the nen_artifacts.py forge/deploy/armory system, all 6 artifact templates (Memory Crystal, Wall Forge, Exploit Weaver, Reach Probe, Bond Auditor, Love Weapon), whitehack_local.py + whitehack_macos.py deep recon commands, solo leveling XP sources, Gate system, and loveproto Node._before_action() integration.
